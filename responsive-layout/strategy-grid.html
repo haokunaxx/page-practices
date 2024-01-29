@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #f2f3f5;
+      }
+      .layout-container {
+        height: 100%;
+        display: grid;
+        grid-template-rows: 60px 60px 1fr 60px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          'header'
+          'nav' 'main' 'footer';
+      }
+      .header {
+        grid-area: header;
+        background-color: #fff;
+      }
+      .nav {
+        grid-area: nav;
+        background-color: #fff;
+      }
+      .main {
+        grid-area: main;
+        background-color: #fff;
+      }
+      .aside {
+        display: none;
+        grid-area: aside;
+        background-color: #fff;
+      }
+      .footer {
+        grid-area: footer;
+        background-color: #fff;
+      }
+
+      /* pad */
+      @media (min-width: 1000px) {
+        .layout-container {
+          grid-template-columns: 1fr 240px;
+          grid-template-rows: 60px 1fr;
+          grid-template-areas: 'header header' 'main aside';
+        }
+        .nav {
+          display: none;
+        }
+        .aside{
+          display: block;
+        }
+        .footer {
+          display: none;
+        }
+      }
+
+      /* mobile */
+      @media (min-width: 1220px) {
+        .layout-container {
+          grid-template-rows: 60px 1fr;
+          grid-template-columns: 140px 1fr 240px;
+          grid-template-areas: 'header header header' 'nav main aside' 'footer footer footer';
+        }
+
+        .aside {
+          display: block;
+        }
+        .nav {
+          display: block;
+        }
+        .footer {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-container">
+      <header class="header">header</header>
+      <nav class="nav">navigator</nav>
+      <main class="main">main</main>
+      <aside class="aside">sidebar</aside>
+      <footer class="footer">footer</footer>
+    </div>
+  </body>
+</html>
