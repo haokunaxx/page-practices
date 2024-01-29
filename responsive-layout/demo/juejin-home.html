@@ -1,11 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f3f5;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      li {
+        margin: 0;
+        padding: 0;
+      }
+
+      div {
+        box-sizing: border-box;
+      }
+
+      .layout-container {
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        display: grid;
+        grid-template-rows: 60px 20px 1fr;
+        grid-template-columns: 1fr 180px minmax(0, 720px) 260px 1fr;
+        grid-template-areas: "header header header header header" '. . . . .' ". nav main aside ." ;
+      }
+
+      .header{
+        grid-area: header;
+        background-color: #fff;
+      }
+
+      .navigator{
+        display: none;
+        grid-area: navigator;
+        background-color: #fff;
+      }
+
+      .nav{
+        position: sticky;
+        top: 20px;
+        margin-right: 20px;
+        max-height: calc(100vh - 100px);
+        grid-area: nav;
+        background-color: #fff;
+      }
+
+      .main{
+        margin-right: 20px;
+        height: 3000px;
+        grid-area: main;
+        background-color: #fff;
+      }
+
+      .aside{
+        grid-area: aside;
+        background-color: #fff;
+      }
+      .footer{
+        display: none;
+        grid-area: footer;
+        background-color: #fff;
+      }
+      
+      @media (max-width: 1220px){
+        .layout-container{
+          grid-template-rows: 60px 46px 10px 1fr;
+          grid-template-columns: 1fr minmax(0, 720px) 280px 1fr;
+          grid-template-areas: "header header header header" "navigator navigator navigator navigator" ". . . ." ". main aside ." ;
+        }
+        .navigator{
+          display: block;
+        }
+        .nav{
+          display: none;
+        }
+      }
+
+      @media (max-width: 1000px){
+        .layout-container{
+          grid-template-rows: 60px 46px 10px 1fr;
+          grid-template-columns: 20px 1fr 20px;
+          grid-template-areas: "header header header" "navigator navigator navigator" ". . . " ". main ."
+        }
+
+        .aside{
+          display: none;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout-container">
+      <header class="header">header</header>
+      <nav class="navigator">navigator</nav>
+      <div class="nav">left-nav</div>
+      <main class="main">main</main>
+      <aside class="aside">aside</aside>
+      <!-- <footer class="footer">footer</footer> -->
+    </div>
+  </body>
 </html>
